@@ -6,7 +6,7 @@ public class SolarSystem {
 	public static void main(String[] args) {
 		
 		try {
-	          FileReader fr=new FileReader("/Users/abdulaziz/git/EE552/solar_system/src/solar_system/input.txt");    
+	          FileReader fr=new FileReader("input.txt");    
 	          
 	          
 	          Scanner s = new Scanner(fr);
