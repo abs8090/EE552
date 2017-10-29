@@ -7,12 +7,13 @@ import javax.swing.*;
 
 public class Calculator extends JFrame{
 
+	// tsting changes
 	Container cont = this.getContentPane();
 	JPanel butnPanel = new JPanel();
 	JPanel operationPanel = new JPanel();
 	JPanel mainPanel = new JPanel();
 	JTextField tx = new JTextField();                		    
-	
+
 	double op1, op2, opResult;
 	String operation;
 	
