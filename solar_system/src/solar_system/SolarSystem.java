@@ -2,35 +2,76 @@ package solar_system;
 import java.io.*;
 import java.util.*;
 public class SolarSystem {
-
+	
+	public String name;
+	public double mass, diameter, gravity;
+	
+	
+	
 	public static void main(String[] args) {
+		ArrayList<SolarSystem> planets = new ArrayList<>();
 		
 		try {
-	          FileReader fr=new FileReader("input.txt");    
-	          
-	          
-	          Scanner s = new Scanner(fr);
-	          int counter = 0;
-				
-	          while (s.hasNext()) {
-					
-					if(s.hasNext() != false){
-						// use stringBuffer to read each line, then separate each line by space and upto index 5
-						//and save it in an array.
-						// then, save that info in an object
-							System.out.println(s.nextLine()+ "\t");
+			FileReader fr=new FileReader("input.txt");
+			
+			Scanner scanner = new Scanner(fr);
+
+			String nextLine = scanner.nextLine();
+			String regex = "(\\s)+";
+
+			String[] header = nextLine.split(regex);
+
+			for(int i = 0; i < header.length; i++){
+				 				 				
+				 if(header[i].equals("MERCURY") || header[i].equals("EARTH") || header[i].equals("MOON")){
+					 
+						 fr=new FileReader("input.txt");
 						
-					}
-				}
+						 scanner = new Scanner(fr);
+						
+					 SolarSystem ss = new SolarSystem();
+					 ss.name = header[i];
+					 
+					 while (scanner.hasNext()) {
 				
-//				while (s.hasNextLine()) {
-//
-//					if(s.hasNextLine() != false){
-//						System.out.println(s.nextLine()+ "\t");
-//					}
-//				}
+						 String[] row = scanner.nextLine().split(regex);
+						 
+						 if(row[0].equals("Mass(1024kg)")){
+							 
+							 if(row[i].contains(",")){
+								 row[i] = row[i].replace(",", "");
+							 }
+							 
+							 ss.mass = Double.valueOf(row[i]);
+							 
+						 }else if(row[0].equals("Diameter(km)")){
+							
+							 if(row[i].contains(",")){
+								 row[i] = row[i].replace(",", "");
+							 }
+							 
+							 ss.diameter = Double.valueOf(row[i]);
+							 
+						 }else if(row[0].equals("Gravity(m/s2)")){
+							 
+							 if(row[i].contains(",")){
+								 row[i] = row[i].replace(",", "");
+							 }
+							 ss.gravity = Double.valueOf(row[i]);
+						 }										
+					 }
+					 planets.add(ss);
+				 }
+			}
+			
+  
+			for(int x = 0; x < planets.size(); x++){
 				
-	          fr.close();  
+				System.out.println(planets.get(x).name);
+				System.out.println(planets.get(x).mass);
+				System.out.println(planets.get(x).diameter);
+				System.out.println(planets.get(x).gravity);
+			}
 		
 		} catch (IOException e) {
 			e.printStackTrace();
