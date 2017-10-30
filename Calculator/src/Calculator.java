@@ -20,7 +20,7 @@ public class Calculator extends JFrame{
 	GridBagConstraints gc = new GridBagConstraints();
 	
 	public Calculator(String title, int w, int h){
-		// hello 
+
 		super(title);
 		setSize(w, h);
 		this.setResizable(false);
@@ -29,15 +29,8 @@ public class Calculator extends JFrame{
 	
 	public void addPanels(){
 		
-		GridLayout mainGL = new GridLayout();
-		mainGL.setHgap(5);
-		mainGL.setVgap(10);
-		
-		mainPanel.setLayout(mainGL);
-		
 		butnsPanel();
 		operationsPanel();
-		
 		
 		cont.add(tx,BorderLayout.NORTH);
 		cont.add(butnPanel, BorderLayout.WEST);
@@ -117,22 +110,20 @@ public class Calculator extends JFrame{
 
 		operationPanel.setSize(200,200);
 		operationPanel.setLayout(new GridBagLayout());
-	    
-		int [][] numbers = new int [3][3];
-		
+	    		
 		 JButton add = new JButton("+");		 
 		 gc.gridx = 3;
 		 gc.gridy = 0;
-		 add.setPreferredSize(new Dimension(60,60));
+		 add.setPreferredSize(new Dimension(60,47));
 		 operationPanel.add(add,gc);
 		    
 		    add.addActionListener(		
-					new ActionListener() { // MyWin$1
+					new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							System.out.println(add.getText());
 							if(tx.equals("")|| tx.equals(null)){
+							
 							}else{
-								//tx.setText(tx.getText() + add.getText());
 								op1 = Double.valueOf(tx.getText());
 								operation = add.getText();
 								tx.setText("");
@@ -146,17 +137,16 @@ public class Calculator extends JFrame{
 		 JButton sub = new JButton("-");
 		 gc.gridx = 3;
 		 gc.gridy = 1;
-		 sub.setPreferredSize(new Dimension(60,60));
+		 sub.setPreferredSize(new Dimension(60,47));
 		 operationPanel.add(sub,gc);
 
 		 sub.addActionListener(		
-					new ActionListener() { // MyWin$1
+					new ActionListener() { 
 						public void actionPerformed(ActionEvent e) {
 							System.out.println(sub.getText());
 							if(tx.equals("") || tx.equals(null)){
-								//tx.setText(sub.getText());
+							
 							}else{
-								//tx.setText(tx.getText() + sub.getText());
 								op1 = Double.valueOf(tx.getText());
 								operation = sub.getText();
 								tx.setText("");
@@ -170,17 +160,16 @@ public class Calculator extends JFrame{
 		
 		 gc.gridx = 3;
 		 gc.gridy = 2;
-		 mult.setPreferredSize(new Dimension(60,60));
+		 mult.setPreferredSize(new Dimension(60,47));
 		 operationPanel.add(mult,gc);
 		 
 		mult.addActionListener(		
-				new ActionListener() { // MyWin$1
+				new ActionListener() { 
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(mult.getText());
 						if(tx.equals("")|| tx.equals(null)){
-							//tx.setText(mult.getText());
+						
 						}else{
-							//tx.setText(tx.getText() + mult.getText());
 							op1 = Double.valueOf(tx.getText());
 							operation = mult.getText();
 							tx.setText("");
@@ -193,17 +182,16 @@ public class Calculator extends JFrame{
 		JButton div = new JButton("/");
 		 gc.gridx = 3;
 		 gc.gridy = 3;
-		 div.setPreferredSize(new Dimension(60,60));
+		 div.setPreferredSize(new Dimension(60,47));
 		 operationPanel.add(div,gc);
 		 
 		div.addActionListener(		
-				new ActionListener() { // MyWin$1
+				new ActionListener() { 
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(div.getText());
 						if(tx.equals("")){
-							//tx.setText(div.getText());
+
 						}else{
-							//tx.setText(tx.getText() + div.getText());
 							op1 = Double.valueOf(tx.getText());
 							operation = div.getText();
 							tx.setText("");
@@ -217,19 +205,17 @@ public class Calculator extends JFrame{
 		
 		 gc.gridx = 3;
 		 gc.gridy = 4;
-		 equals.setPreferredSize(new Dimension(60,60));
+		 equals.setPreferredSize(new Dimension(60,47));
 		 operationPanel.add(equals,gc);
 		 
 		equals.addActionListener(		
-				new ActionListener() { // MyWin$1
+				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(equals.getText());
 						if(tx.equals("")){
-							//tx.setText(equals.getText());
+
 						}else{
-							//tx.setText(tx.getText() + equals.getText());
 							op2 = Integer.valueOf(tx.getText());								
-							//operation = add.getText();
 							
 							switch(operation){
 							case "+": 
@@ -262,7 +248,6 @@ public class Calculator extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		Calculator cal = new Calculator("calculator", 300, 400);
 		cal.setContaingColor(Color.GRAY);
