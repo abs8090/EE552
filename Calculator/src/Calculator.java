@@ -23,9 +23,8 @@ public class Calculator extends JFrame{
 		// hello 
 		super(title);
 		setSize(w, h);
-	
+		this.setResizable(false);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-		setVisible(true);
 	}
 	
 	public void addPanels(){
@@ -39,11 +38,15 @@ public class Calculator extends JFrame{
 		butnsPanel();
 		operationsPanel();
 		
-		mainPanel.add(butnPanel, BorderLayout.WEST);
-		mainPanel.add(operationPanel, BorderLayout.CENTER);
 		
 		cont.add(tx,BorderLayout.NORTH);
-		cont.add(mainPanel, BorderLayout.CENTER);
+		cont.add(butnPanel, BorderLayout.WEST);
+		cont.add(operationPanel, BorderLayout.CENTER);
+		
+		butnPanel.setVisible(true);
+		operationPanel.setVisible(true);
+		setVisible(true);
+
 	}
 	public void setContaingColor(Color c){
 		
@@ -52,7 +55,7 @@ public class Calculator extends JFrame{
 	
 	public void butnsPanel(){
 		
-		butnPanel.setSize(400,400);
+		butnPanel.setSize(200,200);
 		butnPanel.setLayout(new GridBagLayout());
 	    
 		int [][] numbers = new int [3][3];
@@ -63,7 +66,7 @@ public class Calculator extends JFrame{
 			    JButton addButton = new JButton(String.valueOf(title));
 			    gc.gridx = j;
 			    gc.gridy = i;
-			    addButton.setPreferredSize(new Dimension(100,100));
+			    addButton.setPreferredSize(new Dimension(60,60));
 			    butnPanel.add(addButton,gc);
 			    addButton.addActionListener(		
 						new ActionListener() { // MyWin$1
@@ -84,7 +87,8 @@ public class Calculator extends JFrame{
 					JButton addButton0 = new JButton(String.valueOf(0));
 				    gc.gridx = 1;
 				    gc.gridy = 4;
-				    addButton0.setPreferredSize(new Dimension(100,100));
+				    addButton0.setPreferredSize(new Dimension(60,60));
+				    //addButton0.setBounds(10, 80, 45, 42);
 				    butnPanel.add(addButton0,gc);
 				    addButton0.addActionListener(		
 							new ActionListener() { // MyWin$1
@@ -105,21 +109,28 @@ public class Calculator extends JFrame{
 	    
 	}
 	
+	public void buttons(){
+		
+	}
+	
 	public void operationsPanel(){
 
-		BoxLayout bx = new BoxLayout(operationPanel, BoxLayout.Y_AXIS);
+		operationPanel.setSize(200,200);
+		operationPanel.setLayout(new GridBagLayout());
+	    
+		int [][] numbers = new int [3][3];
 		
-		operationPanel.setLayout(bx);
-		operationPanel.setPreferredSize(new Dimension(80,80));
-		
-		 JButton add = new JButton("+");
-		 add.setPreferredSize(new Dimension(100,100));
-		 operationPanel.add(add);
+		 JButton add = new JButton("+");		 
+		 gc.gridx = 3;
+		 gc.gridy = 0;
+		 add.setPreferredSize(new Dimension(60,60));
+		 operationPanel.add(add,gc);
+		    
 		    add.addActionListener(		
 					new ActionListener() { // MyWin$1
 						public void actionPerformed(ActionEvent e) {
 							System.out.println(add.getText());
-							if(tx.equals("")){
+							if(tx.equals("")|| tx.equals(null)){
 							}else{
 								//tx.setText(tx.getText() + add.getText());
 								op1 = Double.valueOf(tx.getText());
@@ -133,13 +144,16 @@ public class Calculator extends JFrame{
 		    
 		 
 		 JButton sub = new JButton("-");
-		 sub.setPreferredSize(new Dimension(100,100));
-		 operationPanel.add(sub);
+		 gc.gridx = 3;
+		 gc.gridy = 1;
+		 sub.setPreferredSize(new Dimension(60,60));
+		 operationPanel.add(sub,gc);
+
 		 sub.addActionListener(		
 					new ActionListener() { // MyWin$1
 						public void actionPerformed(ActionEvent e) {
 							System.out.println(sub.getText());
-							if(tx.equals("")){
+							if(tx.equals("") || tx.equals(null)){
 								//tx.setText(sub.getText());
 							}else{
 								//tx.setText(tx.getText() + sub.getText());
@@ -153,13 +167,17 @@ public class Calculator extends JFrame{
 			);
 		 
 		JButton mult = new JButton("*");
-		mult.setPreferredSize(new Dimension(100,100));
-		operationPanel.add(mult);
+		
+		 gc.gridx = 3;
+		 gc.gridy = 2;
+		 mult.setPreferredSize(new Dimension(60,60));
+		 operationPanel.add(mult,gc);
+		 
 		mult.addActionListener(		
 				new ActionListener() { // MyWin$1
 					public void actionPerformed(ActionEvent e) {
 						System.out.println(mult.getText());
-						if(tx.equals("")){
+						if(tx.equals("")|| tx.equals(null)){
 							//tx.setText(mult.getText());
 						}else{
 							//tx.setText(tx.getText() + mult.getText());
@@ -173,8 +191,11 @@ public class Calculator extends JFrame{
 		);
 		
 		JButton div = new JButton("/");
-		div.setPreferredSize(new Dimension(100,100));
-		operationPanel.add(div);
+		 gc.gridx = 3;
+		 gc.gridy = 3;
+		 div.setPreferredSize(new Dimension(60,60));
+		 operationPanel.add(div,gc);
+		 
 		div.addActionListener(		
 				new ActionListener() { // MyWin$1
 					public void actionPerformed(ActionEvent e) {
@@ -193,8 +214,12 @@ public class Calculator extends JFrame{
 		);
 
 		JButton equals = new JButton("=");
-		equals.setPreferredSize(new Dimension(100,100));
-		operationPanel.add(equals);
+		
+		 gc.gridx = 3;
+		 gc.gridy = 4;
+		 equals.setPreferredSize(new Dimension(60,60));
+		 operationPanel.add(equals,gc);
+		 
 		equals.addActionListener(		
 				new ActionListener() { // MyWin$1
 					public void actionPerformed(ActionEvent e) {
@@ -239,7 +264,7 @@ public class Calculator extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Calculator cal = new Calculator("calculator", 400, 400);
+		Calculator cal = new Calculator("calculator", 300, 400);
 		cal.setContaingColor(Color.GRAY);
 		cal.addPanels();
 		

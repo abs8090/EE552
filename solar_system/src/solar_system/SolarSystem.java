@@ -12,7 +12,7 @@ public class SolarSystem {
 		ArrayList<SolarSystem> planets = new ArrayList<>();
 		
 		try {
-			FileReader fr=new FileReader("input.txt");
+			FileReader fr = new FileReader("input.txt");
 			
 			Scanner scanner = new Scanner(fr);
 
@@ -25,7 +25,7 @@ public class SolarSystem {
 				 				 				
 				 if(header[i].equals("MERCURY") || header[i].equals("EARTH") || header[i].equals("MOON")){
 					 
-						 fr=new FileReader("input.txt");
+						 fr = new FileReader("input.txt");
 						
 						 scanner = new Scanner(fr);
 						
@@ -33,7 +33,7 @@ public class SolarSystem {
 					 ss.name = header[i];
 					 
 					 while (scanner.hasNext()) {
-				
+
 						 String[] row = scanner.nextLine().split(regex);
 						 
 						 if(row[0].equals("Mass(1024kg)")){
