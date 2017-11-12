@@ -252,7 +252,7 @@ public class Calculator extends JFrame{
 		Calculator cal = new Calculator("calculator", 300, 400);
 		cal.setContaingColor(Color.GRAY);
 		cal.addPanels();
-		
+		System.out.println("${args[0]}");
 	}
 
 }

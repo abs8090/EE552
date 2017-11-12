@@ -11,7 +11,7 @@ public class DrawWindow extends JFrame{
 		//setBackground(Color.WHITE);
 		DrawBoard db = new DrawBoard();
 		cont.add(db, BorderLayout.CENTER);
-		setSize(600,600);
+		setSize(800,800);
 		setResizable(false);
 		setVisible(true);
 	}
