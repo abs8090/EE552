@@ -7,11 +7,14 @@ import javax.swing.*;
 public class DrawBoard extends JPanel{
 
 	int r = 0, c = 0;
+	int boxSize = 80;
 	
+	public int getBoxSize(){
+		return boxSize;
+	}
 	@Override
 	public void paint(Graphics g){
 		int winSize = getWidth();
-		int boxSize = 80;
 		int count = 0;
 		while(count <= 10){
 				
