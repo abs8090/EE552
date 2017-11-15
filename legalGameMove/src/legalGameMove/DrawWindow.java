@@ -15,7 +15,7 @@ public class DrawWindow extends JFrame{
 		//setBackground(Color.WHITE);
 		
 		cont.add(db, BorderLayout.CENTER);
-		setSize(800,800);
+		setSize(640,660);
 		
 		MouseClicked ml = new MouseClicked();
 		addMouseListener(ml);
