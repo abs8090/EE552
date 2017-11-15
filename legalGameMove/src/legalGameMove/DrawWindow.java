@@ -11,9 +11,7 @@ public class DrawWindow extends JFrame{
 	public DrawWindow(){		
 		
 		super("game board");
-		Container cont = getContentPane();
-		//setBackground(Color.WHITE);
-		
+		Container cont = getContentPane();		
 		cont.add(db, BorderLayout.CENTER);
 		setSize(640,660);
 		
@@ -27,7 +25,7 @@ public class DrawWindow extends JFrame{
 	
 	class MouseClicked implements MouseListener{
 
-		DrawCircle dc = new DrawCircle();
+//		DrawCircle dc = new DrawCircle();
 		int x, y, w, h;
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -38,11 +36,11 @@ public class DrawWindow extends JFrame{
 			x = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
 			y = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
 			w = h = db.getBoxSize() - 20;
-
-            Graphics g = getGraphics();
-            g.setColor(Color.RED);
-            dc.setPoints(x, y , w, h);
-            dc.draw(g);
+//			Use the following code to delete original location and re-draw where mouse is clicked
+//            Graphics g = getGraphics();
+//            g.setColor(Color.RED);
+//            dc.setPoints(x, y , w, h);
+//            dc.draw(g);
 		}
 
 		@Override
