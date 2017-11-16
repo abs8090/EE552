@@ -33,9 +33,15 @@ public class DrawWindow extends JFrame{
 			System.out.println("x: " + (e.getX()/db.getBoxSize())*db.getBoxSize());
 			System.out.println("y: " + (e.getY()/db.getBoxSize())*db.getBoxSize());
 			
+			System.out.println("row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+			System.out.println("col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+			
+			
 			x = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
 			y = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
 			w = h = db.getBoxSize() - 20;
+			
+			
 //			Use the following code to delete original location and re-draw where mouse is clicked
 //            Graphics g = getGraphics();
 //            g.setColor(Color.RED);
