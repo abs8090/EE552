@@ -68,21 +68,26 @@ public class DrawWindow extends JFrame{
 				w = h = db.getBoxSize() - 20;
 				
             	if(BoardState.bs[r][c] == BoardState.boardState.RED){
+            	
+            		if(BoardState.bs[r2][c2] != BoardState.boardState.RED){
             		
-            		if(r2 == (r + 1)){
-            			
-            			if(c2 == (c - 1) || c2 == (c + 1)){
+            			if(r2 == (r + 1)){
+            				if(c2 == (c - 1) || c2 == (c + 1)){
             				
-            				Graphics g = getGraphics();
-                        	g.setColor(Color.RED);
-                        	dc.setPoints(x2, y2 , w, h);
-                        	dc.draw(g);
-                        	BoardState.bs[r2][c2] = BoardState.boardState.RED;
+            					Graphics g = getGraphics();
+            					
+            					g.setColor(Color.BLACK);
+            					BoardState.draw(g,x2 - 10, y2 - 8 , db.getBoxSize() -2 , db.getBoxSize() -2);
+            					
+            					g.setColor(Color.RED);
+            					dc.setPoints(x2, y2 , w, h);
+            					dc.draw(g);
+            					BoardState.bs[r2][c2] = BoardState.boardState.RED;
                         	
-                        	g.setColor(Color.BLACK);
-                        	dc.setPoints(x, y , w, h);
-                        	dc.draw(g);
-                        	BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            					g.setColor(Color.BLACK);
+            					BoardState.draw(g,x - 10, y - 8 , db.getBoxSize() -2 , db.getBoxSize() -2);
+            					BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            				}
             			}
             		}
             		
@@ -90,19 +95,26 @@ public class DrawWindow extends JFrame{
             		
             	}else if(BoardState.bs[r][c] == BoardState.boardState.BLUE){
             		
-            		if(r2 == (r - 1)){
+            		
+            		if(BoardState.bs[r2][c2] != BoardState.boardState.BLUE){
             			
-            			if(c2 == (c - 1) || c2 == (c + 1)){
-            				Graphics g = getGraphics();
-                        	g.setColor(Color.BLUE);
-                        	dc.setPoints(x2, y2 , w, h);
-                        	dc.draw(g);
-                        	BoardState.bs[r2][c2] = BoardState.boardState.BLUE;
+            			if(r2 == (r - 1)){
+            				if(c2 == (c - 1) || c2 == (c + 1)){
+            					
+            					Graphics g = getGraphics();
+            					
+            					g.setColor(Color.BLACK);
+            					BoardState.draw(g,x2 - 10, y2 - 8 , db.getBoxSize() -2 , db.getBoxSize() -2);
+            					
+            					g.setColor(Color.BLUE);
+            					dc.setPoints(x2, y2 , w, h);
+            					dc.draw(g);
+            					BoardState.bs[r2][c2] = BoardState.boardState.BLUE;
                         	
-                        	g.setColor(Color.BLACK);
-                        	dc.setPoints(x, y , w, h);
-                        	dc.draw(g);
-                        	BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            					g.setColor(Color.BLACK);
+            					BoardState.draw(g,x - 10, y - 8 , db.getBoxSize() -2 , db.getBoxSize() -2);
+            					BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            				}
             			}
             		}
             	
