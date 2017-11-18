@@ -22,8 +22,8 @@ public class DrawBoard extends JPanel{
 				if(odd){
 					g.setColor(Color.white);
 					g.fillRect(r , c, j * boxSize, j * boxSize);
-					System.out.println("row white: " + (c / boxSize));
-					System.out.println("col white: " + (r / boxSize));
+//					System.out.println("row white: " + (c / boxSize));
+//					System.out.println("col white: " + (r / boxSize));
 					BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.ILLEGAL;
 					
 					c+= boxSize;
@@ -33,8 +33,8 @@ public class DrawBoard extends JPanel{
 					g.setColor(Color.black);
 					g.fillRect(r, c, j * boxSize, j * boxSize);
 					
-					System.out.println("row black: " + (c / boxSize));
-					System.out.println("col black: " + (r / boxSize));
+//					System.out.println("row black: " + (c / boxSize));
+//					System.out.println("col black: " + (r / boxSize));
 					BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.AVAILABLE;
 					
 					if(c == (boxSize * 3) || c == (boxSize * 4)){
@@ -64,7 +64,6 @@ public class DrawBoard extends JPanel{
 				r+= 80; 
 			}
 		
-		BoardState.showBoardState();
 	}
 	
 

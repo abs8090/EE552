@@ -20,47 +20,41 @@ public class DrawWindow extends JFrame{
 		
 		setResizable(false);
 		setVisible(true);
-		setDefaultCloseOperation(this.EXIT_ON_CLOSE);		
+		setDefaultCloseOperation(this.EXIT_ON_CLOSE);					
 	}
 	
 	class MouseClicked implements MouseListener{
 
 		DrawBoard db = new DrawBoard();
 		DrawCircle dc = new DrawCircle();
-		int numbOfClicks = 0;
+		int numbOfClicks = 0, count = 0;
 		int x, y, x2, y2, w, h, r, c, r2, c2;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			numbOfClicks++;
-			
-			System.out.println("x: " + (e.getX()/db.getBoxSize())*db.getBoxSize());
-			System.out.println("y: " + (e.getY()/db.getBoxSize())*db.getBoxSize());
+			count++;
+//			System.out.println("x: " + (e.getX()/db.getBoxSize())*db.getBoxSize());
+//			System.out.println("y: " + (e.getY()/db.getBoxSize())*db.getBoxSize());
 			
 			
 			if(numbOfClicks == 1){
 				r = ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
 				c = ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
-				System.out.println("1-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
-				System.out.println("1-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+//				System.out.println("1-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+//				System.out.println("1-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
 				
 				x = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
 				y = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
 				w = h = db.getBoxSize() - 20;
 			}
 			
-
-						
-			
-			System.out.println(BoardState.bs[r][c]);
-
-			
             if(numbOfClicks == 2){
             	
 				r2 = ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
 				c2 = ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
-				System.out.println("2-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
-				System.out.println("2-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+//				System.out.println("2-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+//				System.out.println("2-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
 				
 				
 				x2 = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
@@ -90,9 +84,7 @@ public class DrawWindow extends JFrame{
             				}
             			}
             		}
-            		
-            		System.out.println("you clicked: " + BoardState.bs[r][c]);
-            		
+            		            		
             	}else if(BoardState.bs[r][c] == BoardState.boardState.BLUE){
             		
             		
@@ -120,6 +112,10 @@ public class DrawWindow extends JFrame{
             	
             	}
             	numbOfClicks = 0;
+            }
+            if(count == 3){
+            	BoardState.showBoardState();
+            	count = 0;
             }
 		}
 
