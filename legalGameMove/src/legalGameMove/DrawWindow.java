@@ -25,28 +25,90 @@ public class DrawWindow extends JFrame{
 	
 	class MouseClicked implements MouseListener{
 
-//		DrawCircle dc = new DrawCircle();
-		int x, y, w, h;
+		DrawBoard db = new DrawBoard();
+		DrawCircle dc = new DrawCircle();
+		int numbOfClicks = 0;
+		int x, y, x2, y2, w, h, r, c, r2, c2;
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
+			numbOfClicks++;
+			
 			System.out.println("x: " + (e.getX()/db.getBoxSize())*db.getBoxSize());
 			System.out.println("y: " + (e.getY()/db.getBoxSize())*db.getBoxSize());
 			
-			System.out.println("row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
-			System.out.println("col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
 			
+			if(numbOfClicks == 1){
+				r = ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
+				c = ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
+				System.out.println("1-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+				System.out.println("1-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+				
+				x = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
+				y = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
+				w = h = db.getBoxSize() - 20;
+			}
 			
-			x = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
-			y = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
-			w = h = db.getBoxSize() - 20;
+
+						
 			
+			System.out.println(BoardState.bs[r][c]);
+
 			
-//			Use the following code to delete original location and re-draw where mouse is clicked
-//            Graphics g = getGraphics();
-//            g.setColor(Color.RED);
-//            dc.setPoints(x, y , w, h);
-//            dc.draw(g);
+            if(numbOfClicks == 2){
+            	
+				r2 = ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
+				c2 = ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize();
+				System.out.println("2-row: " + ((e.getY()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+				System.out.println("2-col: " + ((e.getX()/db.getBoxSize())*db.getBoxSize()) / db.getBoxSize());
+				
+				
+				x2 = (e.getX()/db.getBoxSize())*db.getBoxSize() + 10;
+				y2 = (e.getY()/db.getBoxSize())*db.getBoxSize() + 30;
+				w = h = db.getBoxSize() - 20;
+				
+            	if(BoardState.bs[r][c] == BoardState.boardState.RED){
+            		
+            		if(r2 == (r + 1)){
+            			
+            			if(c2 == (c - 1) || c2 == (c + 1)){
+            				
+            				Graphics g = getGraphics();
+                        	g.setColor(Color.RED);
+                        	dc.setPoints(x2, y2 , w, h);
+                        	dc.draw(g);
+                        	BoardState.bs[r2][c2] = BoardState.boardState.RED;
+                        	
+                        	g.setColor(Color.BLACK);
+                        	dc.setPoints(x, y , w, h);
+                        	dc.draw(g);
+                        	BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            			}
+            		}
+            		
+            		System.out.println("you clicked: " + BoardState.bs[r][c]);
+            		
+            	}else if(BoardState.bs[r][c] == BoardState.boardState.BLUE){
+            		
+            		if(r2 == (r - 1)){
+            			
+            			if(c2 == (c - 1) || c2 == (c + 1)){
+            				Graphics g = getGraphics();
+                        	g.setColor(Color.BLUE);
+                        	dc.setPoints(x2, y2 , w, h);
+                        	dc.draw(g);
+                        	BoardState.bs[r2][c2] = BoardState.boardState.BLUE;
+                        	
+                        	g.setColor(Color.BLACK);
+                        	dc.setPoints(x, y , w, h);
+                        	dc.draw(g);
+                        	BoardState.bs[r][c] = BoardState.boardState.AVAILABLE;
+            			}
+            		}
+            	
+            	}
+            	numbOfClicks = 0;
+            }
 		}
 
 		@Override

@@ -44,13 +44,13 @@ public class DrawBoard extends JPanel{
 						if( c < 240){
 							g.setColor(Color.RED);
 							dc.setPoints(r + 10,  c + 10 , 60, 60);
-							BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.TAKEN;
+							BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.RED;
 							dc.draw(g);
 						
 						}else if( c > 320){
 							g.setColor(Color.BLUE);
 							dc.setPoints(r + 10,  c + 10 , 60, 60);
-							BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.TAKEN;
+							BoardState.bs[(c / boxSize)][(r / boxSize)] = BoardState.boardState.BLUE;
 							dc.draw(g);
 							}
 						}

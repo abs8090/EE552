@@ -2,7 +2,7 @@ package legalGameMove;
 
 public class BoardState {
 
-	public static enum boardState { AVAILABLE, TAKEN, ILLEGAL}
+	public static enum boardState { AVAILABLE, RED, BLUE, ILLEGAL}
 	
 	public static boardState[][] bs = new boardState[8][8];
 	
